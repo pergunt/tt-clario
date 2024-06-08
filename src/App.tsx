@@ -1,7 +1,11 @@
-function App() {
+import { LoginForm } from './features';
+
+const App = () => {
   return (
-    <h1 className="text-center text-3xl font-bold underline">Hello world!</h1>
+    <div className="flex h-full w-full items-center justify-center">
+      <LoginForm />
+    </div>
   );
-}
+};
 
 export default App;
