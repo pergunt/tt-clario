@@ -3,12 +3,14 @@ import { ErrorMessage } from 'formik';
 import { INPUT_CASING_REGEXP, NUM_REGEXP } from 'consts';
 import ValidationMessageItem from './ValidationMessageItem';
 import { Types, constants } from './duck';
+import { useAutoAnimate } from '@formkit/auto-animate/react';
 
 const ValidationMessages: FC<Types.ValidationMessagesProps> = ({
   error,
   name,
   inputValue,
 }) => {
+  const [parent] = useAutoAnimate();
   const errors = {
     min: inputValue.length < 8,
     casing: !INPUT_CASING_REGEXP.test(inputValue),
@@ -16,7 +18,7 @@ const ValidationMessages: FC<Types.ValidationMessagesProps> = ({
   };
 
   return (
-    <div className="mt-1 px-3 text-sm/loose text-primary-600">
+    <div className="mt-1 px-3 text-sm/loose text-primary-600" ref={parent}>
       {constants.LIVE_ERRORS.map(({ name, message }) => (
         <ValidationMessageItem
           key={name}

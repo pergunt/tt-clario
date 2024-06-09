@@ -7,9 +7,10 @@ import { Field, FieldProps } from 'formik';
 
 interface InputPasswordProps {
   className?: string;
+  name: string;
 }
 
-const InputPassword: FC<InputPasswordProps> = ({ className }) => {
+const InputPassword: FC<InputPasswordProps> = ({ className, name }) => {
   const [visible, toggleVisible] = useState(false);
 
   const { Icon, inputType } = visible
@@ -21,8 +22,6 @@ const InputPassword: FC<InputPasswordProps> = ({ className }) => {
         Icon: EyeSlashIcon,
         inputType: 'password',
       };
-
-  const name = 'password';
 
   return (
     <Field name={name}>

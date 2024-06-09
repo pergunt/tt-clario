@@ -30,6 +30,8 @@ const InputBase: FC<InputBaseProps> = ({
         const input = e.target;
         const value = e.target.value;
 
+        form.setFieldTouched(name, false);
+
         if (props.type === 'email') {
           form.setFieldValue(name, value);
 
@@ -48,7 +50,7 @@ const InputBase: FC<InputBaseProps> = ({
         });
       }}
       className={classNames(
-        'block h-[56px] w-full rounded-full border-2 border-gray-300 px-[24px] py-[18px] text-base text-primary-600 outline-0 transition-all',
+        'block h-[56px] w-full rounded-full border-2 border-gray-300 px-[24px] py-[18px] text-base text-primary-600 outline-0 transition-colors',
         {
           'focus:border-primary-600': (!error || error) && !touched,
           'border-red-400 bg-red-400/10': error && touched,

@@ -1,20 +1,19 @@
-import { InputEmail, InputPassword } from './components';
+import { InputEmail, InputPassword, DigiCode } from './components';
 import { Formik, Form } from 'formik';
-import { useAutoAnimate } from '@formkit/auto-animate/react';
 import { schemas } from './duck';
 
 const App = () => {
-  const [parent] = useAutoAnimate();
-
   return (
     <Formik<{
       email: string;
       password: string;
+      digiCode: string;
     }>
       validationSchema={schemas.LoginSchema}
       initialValues={{
         email: '',
         password: '',
+        digiCode: '',
       }}
       onSubmit={(values, { setSubmitting }) => {
         setTimeout(() => {
@@ -23,16 +22,14 @@ const App = () => {
         }, 400);
       }}
     >
-      {() => {
-        return (
-          <Form className="w-[311px]">
-            <div ref={parent}>
-              <InputEmail />
-              <InputPassword className="mt-8" />
-            </div>
-          </Form>
-        );
-      }}
+      {() => (
+        <Form className="w-[311px]">
+          <InputEmail name="email" />
+          <InputPassword className="mt-8" name="password" />
+          <DigiCode name="digiCode" />
+          <button hidden />
+        </Form>
+      )}
     </Formik>
   );
 };

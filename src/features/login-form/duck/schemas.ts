@@ -18,6 +18,9 @@ export const LoginSchema = Yup.object().shape({
     .matches(INPUT_CASING_REGEXP, 'casing')
     .matches(NUM_REGEXP, 'digits')
     .required("Can't be blank"),
+  digiCode: Yup.string()
+    .length(4, 'Must be 4 characters long')
+    .required("Can't be blank"),
   email: Yup.string()
     .transform((value) => value.trim())
     .email('Invalid email')

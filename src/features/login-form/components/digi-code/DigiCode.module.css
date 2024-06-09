@@ -1,0 +1,16 @@
+.digiCode {
+    @apply font-bold;
+
+    input {
+        @apply text-primary-600 text-3xl w-[56px] h-[56px] text-center bg-grey-600/5 outline-none rounded-md;
+
+        &:focus {
+            @apply border-primary-600 border-2 rounded-md;
+        }
+    }
+
+    /* Tailwind doesn't have pseudo not() inline class */
+    input:not(:last-child) {
+        @apply mr-4;
+    }
+}
