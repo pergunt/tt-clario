@@ -7,9 +7,15 @@ const App = () => {
   const [parent] = useAutoAnimate();
 
   return (
-    <Formik
-      initialValues={{ email: '', password: '' }}
+    <Formik<{
+      email: string;
+      password: string;
+    }>
       validationSchema={schemas.LoginSchema}
+      initialValues={{
+        email: '',
+        password: '',
+      }}
       onSubmit={(values, { setSubmitting }) => {
         setTimeout(() => {
           alert(JSON.stringify(values, null, 2));
@@ -17,17 +23,16 @@ const App = () => {
         }, 400);
       }}
     >
-      {({ isSubmitting }) => (
-        <Form className="w-[311px]">
-          <div ref={parent}>
-            <InputEmail />
-            <InputPassword className="mt-8" />
-          </div>
-          <button type="submit" className="bg-red-400" disabled={isSubmitting}>
-            Submit
-          </button>
-        </Form>
-      )}
+      {() => {
+        return (
+          <Form className="w-[311px]">
+            <div ref={parent}>
+              <InputEmail />
+              <InputPassword className="mt-8" />
+            </div>
+          </Form>
+        );
+      }}
     </Formik>
   );
 };

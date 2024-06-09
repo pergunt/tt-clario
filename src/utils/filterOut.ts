@@ -1,4 +1,4 @@
-const strip = (value: string) => value.replace(/\s/, '');
+const strip = (value: string) => value.trim().replace(/\s{2,}/, ' ');
 
 const filterOut = (text: string, cursor: number) => {
   const cursorBefore = text.slice(0, cursor);

@@ -9,8 +9,8 @@ export default {
         grey: {
           600: '#151D5133'
         },
-        green: {
-          400: '#5CD6C0'
+      green: {
+          400: '#009796'
         },
         red: {
           400: '#ED5F59'

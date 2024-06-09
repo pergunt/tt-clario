@@ -1,5 +1,6 @@
 import * as Yup from 'yup';
 import emailValidator from 'email-validator';
+import { INPUT_CASING_REGEXP, NUM_REGEXP } from 'consts';
 
 Yup.addMethod(Yup.string, 'email', function (message) {
   return this.test({
@@ -12,13 +13,13 @@ Yup.addMethod(Yup.string, 'email', function (message) {
 export const LoginSchema = Yup.object().shape({
   password: Yup.string()
     .transform((value) => value.trim())
-    .min(8, 'Has at least 8 characters (no spaces)')
-    .max(64, 'Reached the max limit (64)')
-    .matches(/^(?=.*[a-z])(?=.*[A-Z])\S/, 'Uppercase and lowercase letters')
-    .matches(/[0-9]/, '1 digit minimum')
-    .required('Required'),
+    .min(8, 'min')
+    .max(64, 'Reached max limit')
+    .matches(INPUT_CASING_REGEXP, 'casing')
+    .matches(NUM_REGEXP, 'digits')
+    .required("Can't be blank"),
   email: Yup.string()
     .transform((value) => value.trim())
     .email('Invalid email')
-    .required('Required'),
+    .required("Can't be blank"),
 });
